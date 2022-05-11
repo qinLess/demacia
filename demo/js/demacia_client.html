@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset = utf-8"/>
+    <title>Demacia Web测试</title>
+    <script type="text/javascript" src="demacia_client.js"></script>
+    <script type="text/javascript">
+
+        function guid() {
+            function S4() {
+                return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+            }
+
+            return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+        }
+
+        var url = `ws://127.0.0.1:10521/demacia/websocket?group_id=ws_group&client_id=${guid()}`;
+        var client = new DemaciaClient(url);
+
+        client.registerAction('clientTime', function (request, resolve, reject) {
+            console.log('registerAction.Message：' + new Date());
+            resolve('registerAction.Message：' + new Date());
+        });
+
+    </script>
+
+</head>
+<body>
+<h1>Demacia Test</h1>
+</body>
+</html>
